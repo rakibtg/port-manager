@@ -1,5 +1,6 @@
 {
   "name": "port-manager",
+  "description": "A simple port manager application built by @rakibtg",
   "private": true,
   "version": "0.1.0",
   "type": "module",
