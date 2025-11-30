@@ -1,0 +1,321 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  user-select: none;
+  cursor: default;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.toolbar {
+  background: #f3f3f3;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -webkit-app-region: drag;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.title {
+  font-weight: 600;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  -webkit-app-region: no-drag;
+}
+
+button {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.1s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+button:hover:not(:disabled) {
+  background: #f9f9f9;
+  border-color: #bbb;
+}
+
+button:active:not(:disabled) {
+  background: #eee;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+button.danger {
+  background-color: #d32f2f;
+  color: #fff;
+  border-color: #c62828;
+}
+
+button.danger:hover:not(:disabled) {
+  background-color: #b71c1c;
+  border-color: #b71c1c;
+}
+
+button.danger:disabled {
+  background-color: #e0e0e0;
+  color: #a6a6a6;
+  border-color: #ccc;
+  opacity: 1;
+}
+
+button.support-btn {
+  background-color: #2e7d32;
+  color: #fff;
+  border-color: #1b5e20;
+}
+
+button.support-btn:hover:not(:disabled) {
+  background-color: #1b5e20;
+  border-color: #1b5e20;
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+thead {
+  background: #f9f9f9;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+th {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  font-weight: 600;
+  font-size: 12px;
+  color: #666;
+}
+
+td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+tr.selected {
+  background-color: #e3f2fd;
+}
+
+.status-bar {
+  background: #f3f3f3;
+  border-top: 1px solid #ddd;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #eee;
+    background-color: #1e1e1e;
+  }
+
+  .toolbar,
+  .status-bar {
+    background: #252526;
+    border-color: #333;
+  }
+
+  button {
+    background: #333;
+    border-color: #444;
+    color: #eee;
+  }
+
+  button.danger:disabled {
+    background-color: #333;
+    color: #555;
+    border-color: #444;
+  }
+
+  button:hover:not(:disabled) {
+    background: #3e3e3e;
+  }
+
+  thead {
+    background: #252526;
+  }
+
+  th {
+    border-color: #333;
+    color: #aaa;
+  }
+
+  td {
+    border-color: #333;
+    color: #aaa;
+    border-bottom-color: #333;
+  }
+
+  tr:hover {
+    background-color: #2a2d2e;
+  }
+
+  tr.selected {
+    background-color: #094771;
+    color: #fff;
+  }
+}
+
+/* Filter styles */
+.th-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  border-radius: 4px;
+}
+
+.icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #666;
+}
+
+.filter-input {
+  width: 100%;
+  margin-top: 8px;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.filter-input:focus {
+  outline: none;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .icon-btn {
+    color: #aaa;
+  }
+
+  .icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+
+  .filter-input {
+    background: #333;
+    border-color: #444;
+    color: #eee;
+  }
+
+  .filter-input:focus {
+    border-color: #0e639c;
+    box-shadow: 0 0 0 2px rgba(14, 99, 156, 0.3);
+  }
+}
+
+.checkbox-col {
+  width: 40px;
+  text-align: center;
+  padding: 0 8px;
+}
+
+/* Ensure text is not selectable in the table */
+td,
+th {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Allow text selection in inputs */
+input,
+select {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.support-container {
+  padding: 20px;
+  text-align: left;
+}
+
+.support-container li {
+  padding-bottom: 10px;
+}
+
+.support-list {
+  line-height: 1.6;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  pointer-events: all;
+}
+
+.support-intro {
+  margin-bottom: 1rem;
+}
